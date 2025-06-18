@@ -1,5 +1,5 @@
----
 
+````markdown
 # 🌌 Project Ekko
 
 **Project Ekko** is a minimalist third-person survival RPG set on a decaying, fully-explorable planet. Blending elements of *Outer Wilds*, *Fable*, and *Rain World*, it features permadeath, artifact-based combat, tangible world interaction, and a dynamic ecosystem that remembers everything you do.
@@ -10,13 +10,13 @@
 
 ## 🎮 Core Features
 
-* 🪐 **Tiny Planet Open World** — Explore a small, spherical world with simulated gravity and orbital physics.
-* 🔄 **Persistent Worldstate** — The world evolves with or without you; characters, settlements, and ecosystems live or die based on player actions.
-* ☠️ **Permadeath & Legacy** — When you die, your influence remains. Return as a new character, but your consequences stay.
-* 🧿 **Cursed Relic Combat** — Weapons are unstable ancient relics with powerful but unpredictable effects.
-* 🚛 **Physical Inventory System** — No UI menus; carry, load, and store items by hand or vehicle.
-* 🏚️ **Settlement Evolution** — Settlements grow or collapse based on trade, diplomacy, and leadership—without direct control.
-* 🎭 **Faction Identity Through Culture** — Music, attire, structure, and behavior express each group's identity, not just dialogue.
+- 🪐 **Tiny Planet Open World** — Explore a small, spherical world with simulated gravity and orbital physics.  
+- 🔄 **Persistent Worldstate** — The world evolves with or without you; characters, settlements, and ecosystems live or die based on player actions.  
+- ☠️ **Permadeath & Legacy** — When you die, your influence remains. Return as a new character, but your consequences stay.  
+- 🧿 **Cursed Relic Combat** — Weapons are unstable ancient relics with powerful but unpredictable effects.  
+- 🚛 **Physical Inventory System** — No UI menus; carry, load, and store items by hand or vehicle.  
+- 🏚️ **Settlement Evolution** — Settlements grow or collapse based on trade, diplomacy, and leadership—without direct control.  
+- 🎭 **Faction Identity Through Culture** — Music, attire, structure, and behavior express each group's identity, not just dialogue.  
 
 ---
 
@@ -38,9 +38,10 @@
 
    ```bash
    git clone https://github.com/YOURNAME/Project_Ekko.git
-   ```
+````
+
 2. Open the project in Unity Hub (ensure it's not stored in OneDrive)
-3. Linked to Unity Cloud (services manually configured)
+3. Link it to Unity Cloud manually via Project Settings → Services
 
 ---
 
@@ -73,4 +74,4 @@ Assets/
 
 This project is currently under a private development license. Not intended for distribution.
 
----
+```
