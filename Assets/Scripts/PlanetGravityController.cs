@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlanetGravityController : MonoBehaviour
 {
     [Header("References")]
     public Transform gravityCenter;
+    public Transform groundCheckOrigin; // Optional: point this to your model or feet
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -33,6 +34,12 @@ public class PlanetGravityController : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
         cam = Camera.main;
+
+        // Optional default for groundMask
+        if (groundMask.value == 0)
+        {
+            groundMask = LayerMask.GetMask("Ground", "Default");
+        }
     }
 
     void Update()
@@ -41,7 +48,6 @@ public class PlanetGravityController : MonoBehaviour
 
         gravityUp = (transform.position - gravityCenter.position).normalized;
 
-        // Handle Jump Input
         if (Input.GetButtonDown("Jump"))
             jumpBufferTimer = jumpBufferTime;
 
@@ -52,8 +58,8 @@ public class PlanetGravityController : MonoBehaviour
             coyoteTimer = 0f;
         }
 
-        if (jumpBufferTimer > 0) jumpBufferTimer -= Time.deltaTime;
-        if (coyoteTimer > 0) coyoteTimer -= Time.deltaTime;
+        jumpBufferTimer -= Time.deltaTime;
+        coyoteTimer -= Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -79,9 +85,10 @@ public class PlanetGravityController : MonoBehaviour
 
     void CheckGround()
     {
-        RaycastHit hit;
-        Vector3 rayOrigin = transform.position - gravityUp * 0.1f;  // Offset downwards slightly to avoid detecting self
-        isGrounded = Physics.Raycast(rayOrigin, -gravityUp, out hit, groundCheckDistance, groundMask);
+        Vector3 origin = groundCheckOrigin ? groundCheckOrigin.position : transform.position;
+        Vector3 rayOrigin = origin - gravityUp * 0.1f;
+
+        isGrounded = Physics.Raycast(rayOrigin, -gravityUp, out RaycastHit hit, groundCheckDistance, groundMask);
 
         if (isGrounded)
         {
@@ -111,9 +118,7 @@ public class PlanetGravityController : MonoBehaviour
     {
         Vector3 vel = rb.linearVelocity;
         Vector3 downwardVel = Vector3.Project(vel, -gravityUp);
-        if (downwardVel.magnitude > 0)
-            vel -= downwardVel;
-
+        vel -= downwardVel;
         vel += gravityUp * jumpForce;
         rb.linearVelocity = vel;
     }
