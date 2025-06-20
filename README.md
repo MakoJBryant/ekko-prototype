@@ -1,6 +1,6 @@
 # 🌌 Project Ekko
 
-**Project Ekko** is a minimalist third-person survival RPG set on a decaying, fully-explorable planet. Blending elements of *Outer Wilds*, *Rain World*, and *Shadow of the Colossus*, it features permadeath, slow tactical combat, physical interaction, and a dynamic ecosystem that remembers everything you do.
+**Project Ekko** is a minimalist third-person survival RPG set on a decaying, fully-explorable planet. Blending elements of *Outer Wilds*, *Rain World*, and *Shadow of the Colossus*, it features permadeath, slow tactical combat, physically grounded interaction, and a dynamic ecosystem that remembers everything you do.
 
 > "Your world is the save file."
 
@@ -9,12 +9,12 @@
 ## 🎮 Core Features
 
 - 🪐 **Tiny Planet Open World** — Explore a small, spherical world with simulated gravity and orbital physics.  
-- 🔄 **Persistent Worldstate** — The world evolves with or without you; characters, settlements, and ecosystems live or die based on player actions.  
-- ☠️ **Permadeath & Legacy** — When you die, your influence remains. Return as a new character, but your consequences stay.  
-- 🔫 **Tactical Survival Combat** — Inspired by mil-sim games like *Far Cry 2* and *The Long Dark*, with slow gunplay, magazine-based reloading, and jamming weapons.  
-- 🚛 **Physical Inventory System** — No UI menus; carry, load, and store items by hand or vehicle.  
-- 🏚️ **Settlement Evolution** — Settlements grow or collapse based on trade, diplomacy, and leadership—without direct control.  
-- 🎭 **Faction Identity Through Culture** — Music, attire, structure, and behavior express each group's identity, not just dialogue.  
+- 🔄 **Persistent Worldstate & Settlement Evolution** — The world changes based on your actions. Settlements visibly grow, adapt, or collapse over time through your trade, diplomacy, and influence — much like Terry Town in *Tears of the Kingdom* or the Sims Settlements mod for *Fallout 4*.  
+- ☠️ **Permadeath & Legacy** — Your character may die, but your impact remains. Return as a new character to a world transformed by your past.  
+- 🔫 **Tactical Survival Combat** — Slow-paced, tactical gunplay inspired by *Far Cry 2* and *The Long Dark*, featuring realistic weapon mechanics including jams and magazine reloads.  
+- 🚛 **Physical Inventory & Interaction System** — No traditional UI menus. All inventory and trade is handled through physically picking up, carrying, stacking, and loading objects — similar to *Breath of the Wild*’s tactile world interactions.  
+- 🎭 **Faction Identity Through Culture & Environment** — Each faction’s personality shines through their music, architecture, attire, and behaviors — not just dialogue.  
+- 🌱 **Emergent Ecosystem & NPC Behavior** — Wildlife, enemies, and NPCs live reactive lives, responding dynamically to player actions and settlement evolution.
 
 ---
 
@@ -26,6 +26,7 @@
 - **The Long Dark** – Tactical, slow-paced survival in a dying world  
 - **Sable / Death Stranding** – Slow traversal and tactile, grounded exploration  
 - **Fable** – Intimate, reactive towns and whimsical tone  
+- **Breath of the Wild / Tears of the Kingdom** – Physical interaction, player-driven settlement evolution, and emergent gameplay  
 
 ---
 
@@ -37,39 +38,5 @@
 
    ```bash
    git clone https://github.com/MakoJBryant/Project_Ekko.git
-   ```
-
-2. Open the project in Unity Hub (ensure it's not stored in OneDrive)  
-
-3. Link it to Unity Cloud manually via Project Settings → Services  
 
 ---
-
-## 📁 Project Structure (WIP)
-
-```
-Assets/
-├── Core/              # Game systems, player, world state
-├── UI/                # Diegetic UI elements
-├── Environments/      # Planet terrain, biomes
-├── Gear/              # Weapons, equipment, survival mechanics
-├── Factions/          # Settlement + faction logic
-```
-
----
-
-## 🗺️ Vision
-
-> A grounded, mysterious world that reacts to your presence. You are not the hero—just one part of a decaying system struggling to survive.
-
----
-
-## 📌 Status
-
-> Early prototyping (gravity system, world state persistence, and speeder physics). All systems are modular and designed to be layered gradually.
-
----
-
-## 🛠️ License
-
-This project is currently under a private development license. Not intended for distribution.
