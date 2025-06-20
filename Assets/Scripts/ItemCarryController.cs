@@ -17,32 +17,21 @@ public class ItemCarryController : MonoBehaviour
 
     private Vector3 originalScale;
 
-    void Start()
-    {
-        // Ensure pickupLayer includes Default layer (layer 0)
-        if ((pickupLayer.value & (1 << 0)) == 0)
-        {
-            pickupLayer |= (1 << 0); // Add Default layer
-        }
-    }
-
     void Update()
     {
+        if (carriedTransform != null)
+        {
+            // Snap position and rotation directly every frame
+            carriedTransform.position = carryPoint.position;
+            carriedTransform.rotation = carryPoint.rotation;
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (carriedTransform == null)
                 TryPickup();
             else
                 Drop();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (carriedTransform != null)
-        {
-            carriedTransform.position = carryPoint.position;
-            carriedTransform.rotation = carryPoint.rotation;
         }
     }
 
@@ -60,21 +49,21 @@ public class ItemCarryController : MonoBehaviour
                 // Store original scale before parenting
                 originalScale = carriedTransform.localScale;
 
-                // Set physics state
+                // Make kinematic and disable gravity so physics don't affect it
                 carriedRb.isKinematic = true;
                 carriedRb.useGravity = false;
                 carriedRb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-                // Set layer to avoid re-hit immediately
+                // Change layer to avoid player collisions
                 carriedTransform.gameObject.layer = LayerMask.NameToLayer("HeldObject");
 
-                // Parent to carry point (retain world position and rotation)
+                // Parent to carry point (keep world position)
                 carriedTransform.SetParent(carryPoint, true);
 
-                // Restore scale (protect against parent scaling)
+                // Restore scale (in case parenting scales object)
                 carriedTransform.localScale = originalScale;
 
-                // Snap to carry point
+                // Snap to carry point immediately
                 carriedTransform.position = carryPoint.position;
                 carriedTransform.rotation = carryPoint.rotation;
             }
@@ -91,18 +80,18 @@ public class ItemCarryController : MonoBehaviour
         // Restore scale
         carriedTransform.localScale = originalScale;
 
-        // Reset physics
+        // Restore physics
         carriedRb.isKinematic = false;
         carriedRb.useGravity = true;
 
         // Reset layer so it can be picked up again
         carriedTransform.gameObject.layer = LayerMask.NameToLayer("Default");
 
-        // Clear motion
+        // Reset velocities to avoid unwanted movement
         carriedRb.linearVelocity = Vector3.zero;
         carriedRb.angularVelocity = Vector3.zero;
 
-        // Add push
+        // Add a small push forward on drop
         carriedRb.AddForce(playerCamera.transform.forward * dropPushForce, ForceMode.VelocityChange);
 
         // Clear references
